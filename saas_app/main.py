@@ -1,8 +1,10 @@
 from fastapi import FastAPI
+import uvicorn
+
+from saas_app.router import websocket
 
 app = FastAPI()
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+
+app.include_router(websocket.router)
 
